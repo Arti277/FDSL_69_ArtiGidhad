@@ -1,0 +1,38 @@
+#include<stdio.h>
+int main(){
+    int n;
+    printf("ENTER THE SIZE OF ARRAY :\n");
+    scanf("%d",&n);
+    int arr[n];
+    printf("PLEASE ENTER THE %d ELEMENTS OF ARRAY :\n",n);
+    for(int i=0;i<n;i++){
+        printf("ELEMENT NO.%d : ",i+1);
+        scanf("%d",&arr[i]);
+    }
+    // insertion sort
+    int temp=0;
+    for(int i=1;i<n;i++)
+    {
+    printf("\nFOR PASS:%d\n",i);
+    
+        for(int j=0;j<n;j++){
+            if(arr[j]>arr[i]){
+                temp=arr[i];
+                for(int k=i-1;k>=j;k--){
+                    arr[k+1]=arr[k];
+                }
+                arr[j]=temp;
+            }
+        }
+        for(int j=0;j<n;j++)
+        {
+            printf("%d ",arr[j]);
+        }
+    }
+    
+    printf("\nSORTED ARRAY IS :\n");
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    return 0;
+}
