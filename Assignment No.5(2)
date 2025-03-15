@@ -1,0 +1,49 @@
+#include <stdio.h>
+int main()
+{
+int n,i,a[20],mid;
+printf("ENTER THE SIZE OF ARRAY:\n");
+scanf("%d",&n);
+printf("ENTER %d ARRAY ELEMENTS:\n",n);
+for(i=0;i<n;i++)
+{
+  scanf("%d",&a[i]);
+}
+int key;
+  printf("ENTER THE NUMBER WHICH U WANT TO SEARCH:\n");
+  scanf("%d",&key);
+int low=0;
+int  high=n-1;
+  while(low<=high)
+   {
+  mid =(low + high)/2;
+  if(a[mid]==key)
+   {
+    printf("%d IS FOUND AT INDEX: %d ",key ,mid);
+    int low = mid - 1;
+    while (low>= 0 && a[low] == key)
+    {
+     printf("%d IS FOUND AT INDEX: %d\n", key, low);
+     low--;
+    }
+     int high = mid + 1;
+     while (high < n && a[high] == key)
+     {
+     printf("%d IS FOUND AT INDEX: %d\n", key, high);
+     high++;
+     }
+     return 1;
+  }
+else if(a[mid]<key)
+{
+  low=mid+1;
+}
+else
+{
+high=mid-1;
+}
+}
+if(low>high)
+printf("NOT FOUND\n");
+return 0;
+}
