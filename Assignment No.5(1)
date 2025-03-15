@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main()
+{
+int i,j,n,a[20],key,count=0;
+printf("ENTER A SIZE OF ARRAY:\n");
+scanf("%d",&n);
+printf("ENTER %d ARRAY ELEMENTS:\n",n);
+for(i=0;i<n;i++)
+{
+    printf("ENTER %d ELEMENT:",i+1);
+    scanf("%d",&a[i]);
+}
+printf("ENTER A NUMBER U WANT TO SEARCH:\n");
+scanf("%d",&key);
+printf("ELEMENT %d FOUND AT INDEX:",key);
+for(i=0;i<n;i++)
+{
+    if(a[i]==key){
+    printf("%d ",i);
+    count++;
+    }
+}
+if(count!=0)
+{
+    printf("\nAND THE NUMBER %d is PRESENT :%d TIMES\n",key,count);
+}   
+else{
+    printf("NOT FOUND\n");
+}
+return 0;
+}
