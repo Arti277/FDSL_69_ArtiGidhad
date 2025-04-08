@@ -1,0 +1,44 @@
+#include<stdio.h>
+int a[5],n=5,top=-1;
+void push(rem)
+{ 
+    top++;
+    a[top]=rem;
+}
+void decimaltobinary(num)
+{
+    int rem,quo;
+   while(num/2>=1 && num!=1)
+    {   rem=num%2;
+        quo=num/2;
+        push(rem);
+        num=quo;
+        if(num==1)
+        {
+          push(num); 
+        }
+    }
+}
+void pop()
+{
+  printf("%d", a[top]);
+  top--;
+}
+int main()
+{
+    int num;
+    printf("ENTER A DECIMAL NUMBER:\n");
+    scanf("%d", &num);
+    if(num==0)
+    {
+        printf("BINARY FORM= 0");
+    }
+    else{
+     decimaltobinary(num);
+    }
+    printf("THE BINARY FORM OF DECIMAL NUMBER IS:\n");
+    for(int i=top;i>=0;i--){
+    pop();
+    }
+    return 0;
+}
