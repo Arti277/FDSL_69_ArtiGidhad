@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+
+char a[15], stack[15];
+int l, i, top = -1;
+
+void push(char c);
+int pop(char c);
+
+int main() {
+    printf("ENTER A PARANTHESIS STRING:\n");
+    scanf("%s", a);
+    l = strlen(a);
+
+    for(i=0; i<l;i++) {
+        if(a[i]=='{'||a[i]=='('||a[i]=='[')
+        {
+            push(a[i]);
+        }
+        else if(a[i]=='}'||a[i]==')'||a[i]==']')
+        {
+            if(top == -1) 
+            {
+                printf("INVALID CHARACTER\n");
+                return 0;
+            }
+            else {
+                if(pop(a[i])==0)
+                {
+                    printf("MATCH NOT FOUND\n");
+                    return 0;
+                }
+                else {
+                    printf("MATCH FOUND\n");
+                }
+            }
+        }
+    }
+
+    if(top==-1)
+        printf("All PARANTHESIS MATCHED CORRECTLY\n");
+    else
+        printf("UNMATCHED OPENING PARANTHESIS REMAINS \n");
+
+    return 0;
+}
+
+void push(char c)
+{
+    top++;
+    stack[top]=c;
+}
+
+int pop(char c)
+{
+    char open = stack[top--];
+    if((open=='('&& c == ')') ||
+       (open=='{'&& c == '}') ||
+       (open=='[' && c == ']'))
+        return 1;
+    else
+        return 0;
+}
